@@ -3,7 +3,7 @@ import type { Project } from '../data/portfolio'
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <article className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900">
       <h3 className="text-xl font-semibold">{project.title}</h3>
       <p className="mt-3 flex-1 leading-relaxed text-slate-600 dark:text-slate-300">{project.description}</p>
 
