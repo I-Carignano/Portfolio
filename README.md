@@ -111,10 +111,12 @@ Las medidas se toman sobre la URL publicada, no sobre localhost.
 
 | Categoría | Mobile | Desktop |
 | --- | --- | --- |
-| Performance | pendiente | pendiente |
-| Accessibility | pendiente | pendiente |
-| Best Practices | pendiente | pendiente |
-| SEO | pendiente | pendiente |
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
+
+Medido el 05/10/2026 con Chrome DevTools en ventana de incógnito sobre https://i-carignano.github.io/Portfolio/.
 
 Para medirlas después del deploy:
 
