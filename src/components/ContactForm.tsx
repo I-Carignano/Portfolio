@@ -32,6 +32,10 @@ export default function ContactForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    // Honeypot: si el campo oculto viene tildado, es un bot y no se envía nada.
+    const botField = event.currentTarget.elements.namedItem('botcheck') as HTMLInputElement | null
+    if (botField?.checked) return
+
     const formErrors = validateContact(fields)
     setErrors(formErrors)
     if (Object.keys(formErrors).length > 0) {
@@ -53,12 +57,15 @@ export default function ContactForm() {
         body: JSON.stringify({
           access_key: ACCESS_KEY,
           subject: `Nuevo mensaje de ${fields.name.trim()} desde tu portfolio`,
+          from_name: 'Portfolio Ignacio Carignano',
+          botcheck: false,
           name: fields.name.trim(),
           email: fields.email.trim(),
           message: fields.message.trim(),
         }),
       })
-      const data = (await response.json()) as { success?: boolean }
+      const data = (await response.json()) as { success?: boolean; message?: string }
+      if (!data.success) console.error(data.message)
       if (!response.ok || !data.success) throw new Error('Envío rechazado')
       setStatus('success')
       setFields(emptyFields)
@@ -70,6 +77,8 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5" aria-label="Formulario de contacto">
+      {/* Campo trampa para bots: oculto para personas y lectores de pantalla. */}
+      <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" autoComplete="off" className="hidden" />
       <div>
         <label htmlFor="name" className="block text-sm font-medium">
           Nombre
