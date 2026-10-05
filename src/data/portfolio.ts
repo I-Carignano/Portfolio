@@ -3,8 +3,9 @@ export const profile = {
   role: 'Desarrollador Junior · .NET y Full Stack',
   tagline:
     'Construyo aplicaciones de escritorio y web con C# y .NET, desde la base de datos hasta la interfaz.',
-  avatar: '/avatar.webp',
-  cvUrl: '/cv/Ignacio-Carignano-CV.pdf',
+  // BASE_URL incluye el subdirectorio de GitHub Pages (/Portfolio/).
+  avatar: `${import.meta.env.BASE_URL}avatar.webp`,
+  cvUrl: `${import.meta.env.BASE_URL}cv/Ignacio-Carignano-CV.pdf`,
   email: 'nachocarignano@gmail.com',
   github: 'https://github.com/I-Carignano',
   linkedin: 'https://www.linkedin.com/in/ignacio-carignano/',
