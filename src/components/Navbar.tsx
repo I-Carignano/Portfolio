@@ -89,9 +89,9 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
 
   return (
     <>
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-          <a href="#inicio" className="truncate font-semibold text-slate-900 dark:text-slate-100">
+    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 md:pt-4">
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white/75 px-4 shadow-xl shadow-slate-900/10 backdrop-blur-[18px] backdrop-saturate-150 md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full md:pl-6 md:pr-2.5 dark:border-teal-300/15 dark:bg-slate-900/70 dark:shadow-black/40">
+          <a href="#inicio" className="truncate font-semibold text-slate-900 md:justify-self-start dark:text-slate-100">
             Ignacio Carignano
           </a>
 
@@ -112,7 +112,7 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 md:justify-self-end">
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
 
             <button
