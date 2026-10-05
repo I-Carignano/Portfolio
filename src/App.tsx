@@ -1,6 +1,7 @@
 import About from './components/About'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import Projects from './components/Projects'
 import { useTheme } from './hooks/useTheme'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <main id="contenido" className="mx-auto max-w-6xl px-4 sm:px-6">
         <Hero />
         <About />
+        <Projects />
       </main>
     </>
   )
