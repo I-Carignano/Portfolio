@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* El modo oscuro se activa con la clase "dark" en <html>, no con la preferencia del sistema. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    background-color: #f8fafc;
+  }
+
+  html.dark {
+    background-color: #020617;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-teal-700 dark:outline-teal-300;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
