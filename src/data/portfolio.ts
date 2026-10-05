@@ -1,8 +1,8 @@
 export const profile = {
   name: 'Ignacio Carignano',
-  role: 'Desarrollador Junior · .NET y Full Stack',
+  role: 'Desarrollador Junior · Full Stack · .NET y Node.js',
   tagline:
-    'Construyo aplicaciones de escritorio y web con C# y .NET, desde la base de datos hasta la interfaz.',
+    'Construyo aplicaciones de punta a punta con .NET y Node.js, desde la base de datos hasta la interfaz.',
   // BASE_URL incluye el subdirectorio de GitHub Pages (/Portfolio/).
   avatar: `${import.meta.env.BASE_URL}avatar.webp`,
   cvUrl: `${import.meta.env.BASE_URL}cv/Ignacio-Carignano-CV.pdf`,
@@ -16,11 +16,20 @@ export const profile = {
 
 export const about = {
   bio:
-    'Soy estudiante avanzado de Ingeniería en Sistemas de la Información en la UAI Rosario, con el 72,5 % de la carrera aprobado. Desarrollé aplicaciones de escritorio con C# y WinForms, una plataforma full-stack con .NET 9 y Blazor, y un juego web publicado en GitHub Pages. Hoy trabajo en soporte técnico IT y busco mi primer rol en desarrollo donde aportar y crecer con code review.',
+    'Soy estudiante avanzado de Ingeniería en Sistemas de la Información en la UAI Rosario, con el 72,5 % de la carrera aprobado, y me gusta construir aplicaciones de punta a punta, desde la base de datos hasta la interfaz. Trabajo en dos ecosistemas: con C# y .NET desarrollé VitaStays, en versión de escritorio con WinForms y en versión web full-stack con API REST en ASP.NET Core y Blazor, y con Node.js, TypeScript y MongoDB armé una API REST con autenticación JWT; en el frontend publiqué Futbolle y este portfolio en React. En paralelo llevo adelante TapTrack, mi propio emprendimiento con su sitio web en producción, y trabajo en soporte técnico IT. Busco mi primer rol como desarrollador en un equipo donde pueda aportar desde tareas concretas y seguir creciendo con code review y mentoría.',
   skills: [
     {
       category: 'Frontend',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'Blazor WebAssembly', 'MudBlazor'],
+      items: [
+        'HTML5',
+        'CSS3',
+        'JavaScript',
+        'TypeScript',
+        'React',
+        'Tailwind CSS',
+        'Blazor WebAssembly',
+        'MudBlazor',
+      ],
     },
     {
       category: 'Backend',
@@ -30,14 +39,27 @@ export const about = {
         'ASP.NET Core',
         'API REST',
         'Entity Framework Core',
-        'SQL Server',
-        'T-SQL',
+        'SQL Server / T-SQL',
         'JWT y BCrypt',
+        'Node.js',
+        'Express',
+        'MongoDB',
+        'Mongoose',
+        'Zod',
       ],
     },
     {
       category: 'Herramientas',
-      items: ['Git', 'GitHub', 'Visual Studio 2022', 'SQL Server Management Studio', 'Postman', 'SendGrid'],
+      items: [
+        'Git',
+        'GitHub',
+        'GitHub Actions',
+        'Vite',
+        'Visual Studio 2022',
+        'SQL Server Management Studio',
+        'Postman',
+        'VS Code',
+      ],
     },
   ],
 }
@@ -46,24 +68,32 @@ export type Project = {
   title: string
   description: string
   technologies: string[]
-  repoUrl: string
+  // Opcional: los proyectos privados no tienen repositorio público.
+  repoUrl?: string
   demoUrl?: string
 }
 
 export const projects: Project[] = [
   {
-    title: 'VitaStays · Plataforma web de gestión',
+    title: 'VitaStays · Versión web full-stack',
     description:
-      'Aplicación full-stack para administrar reservas, clientes y cabañas, con cálculo de ocupación anual, mensual y diaria, y un semáforo que compara la ocupación con los objetivos definidos.',
-    technologies: ['.NET 9', 'ASP.NET Core', 'Blazor WebAssembly', 'Entity Framework Core', 'SQL Server', 'JWT'],
+      'Plataforma web para administrar reservas, clientes y cabañas, con una API REST protegida con JWT y un front-end en Blazor WebAssembly. Calcula la ocupación anual, mensual y diaria, y la compara con los objetivos definidos mediante un semáforo.',
+    technologies: ['.NET 9', 'ASP.NET Core', 'API REST', 'Blazor WebAssembly', 'Entity Framework Core', 'SQL Server', 'JWT'],
     repoUrl: 'https://github.com/I-Carignano/Proyecto_BDA',
   },
   {
-    title: 'VitaStays · Sistema de escritorio',
+    title: 'VitaStays · Versión de escritorio',
     description:
-      'Sistema para gestionar cabañas, reservas, servicios y mantenimientos, con control de permisos, auditoría de operaciones y recuperación de contraseña por correo.',
+      'Aplicación de escritorio para administrar cabañas, reservas, servicios, mantenimientos y empleados. Incluye permisos por grupo, auditoría de operaciones, informes en PDF y Excel, y recuperación de contraseña por correo.',
     technologies: ['C#', '.NET 8', 'WinForms', 'Entity Framework Core', 'SQL Server', 'SendGrid'],
     repoUrl: 'https://github.com/I-Carignano/ProyectoIDS',
+  },
+  {
+    title: 'API REST con Node.js, Express y TypeScript',
+    description:
+      'API REST con routing modular versionado, autenticación completa con JWT (access y refresh tokens), cookies httpOnly y autorización por roles. Valida los datos en runtime con Zod y persiste en MongoDB con Mongoose, con paginación y ordenamiento.',
+    technologies: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'Mongoose', 'Zod', 'JWT'],
+    repoUrl: 'https://github.com/I-Carignano/Actividades-MYDW',
   },
   {
     title: 'Futbolle · Juego web',
@@ -74,10 +104,10 @@ export const projects: Project[] = [
     demoUrl: 'https://i-carignano.github.io/Trabajo_Futbolle/',
   },
   {
-    title: 'Actividades MYDW · API REST',
+    title: 'TapTrack · Emprendimiento propio',
     description:
-      'API REST con Express y TypeScript para gestionar estudiantes y profesores, con operaciones CRUD y persistencia en MongoDB mediante Mongoose.',
-    technologies: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'Mongoose'],
-    repoUrl: 'https://github.com/I-Carignano/Actividades-MYDW',
+      'Landing de un emprendimiento propio de tarjetas NFC y QR que llevan al cliente a dejar una reseña en Google, con informes de reputación. Incluye formulario de contacto, acceso directo a WhatsApp y diseño responsive.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'Apache', 'Google Fonts'],
+    demoUrl: 'https://taptrack.com.ar/',
   },
 ]

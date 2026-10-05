@@ -1,9 +1,9 @@
 import { projects } from '../data/portfolio'
 import type { Project } from '../data/portfolio'
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
   return (
-    <article className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900">
+    <article className={`flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900 ${wide ? 'md:col-span-2' : ''}`}>
       <h3 className="text-xl font-semibold">{project.title}</h3>
       <p className="mt-3 flex-1 leading-relaxed text-slate-600 dark:text-slate-300">{project.description}</p>
 
@@ -19,14 +19,16 @@ function ProjectCard({ project }: { project: Project }) {
       </ul>
 
       <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-700 underline-offset-4 hover:underline dark:text-teal-300"
-        >
-          Ver repositorio<span className="sr-only"> de {project.title} (se abre en una pestaña nueva)</span>
-        </a>
+        {project.repoUrl && (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-teal-700 underline-offset-4 hover:underline dark:text-teal-300"
+          >
+            Ver repositorio<span className="sr-only"> de {project.title} (se abre en una pestaña nueva)</span>
+          </a>
+        )}
         {project.demoUrl && (
           <a
             href={project.demoUrl}
@@ -37,6 +39,7 @@ function ProjectCard({ project }: { project: Project }) {
             Ver demo<span className="sr-only"> de {project.title} (se abre en una pestaña nueva)</span>
           </a>
         )}
+        {!project.repoUrl && <p className="text-xs font-normal text-slate-500 dark:text-slate-400">Repositorio privado · proyecto comercial propio</p>}
       </div>
     </article>
   )
@@ -53,8 +56,8 @@ export default function Projects() {
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} wide={index === projects.length - 1 && projects.length % 2 === 1} />
         ))}
       </div>
     </section>
