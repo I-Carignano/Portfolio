@@ -71,7 +71,7 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
       </div>
 
       {/* Menú lateral: solo mobile */}
-      <div className={`fixed inset-0 z-50 md:hidden ${menuOpen ? '' : 'pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-50 overflow-hidden md:hidden ${menuOpen ? '' : 'pointer-events-none'}`}>
         <button
           type="button"
           tabIndex={menuOpen ? 0 : -1}
