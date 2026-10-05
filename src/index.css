@@ -6,7 +6,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
     background-color: #f8fafc;
   }
 
@@ -26,5 +26,42 @@
     html {
       scroll-behavior: auto;
     }
+  }
+}
+
+/* Animaciones de entrada. Solo opacity y transform: no mueven el layout (sin CLS).
+   Con prefers-reduced-motion no se aplica ninguna regla, así que todo queda visible. */
+:root {
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 900ms var(--ease-reveal) var(--reveal-delay, 0ms),
+      transform 900ms var(--ease-reveal) var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hijos escalonados: cada uno espera --i * 110ms. */
+  .reveal-group > .reveal-item {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 800ms var(--ease-reveal) calc(var(--i, 0) * 110ms + 120ms),
+      transform 800ms var(--ease-reveal) calc(var(--i, 0) * 110ms + 120ms),
+      translate 300ms var(--ease-out) 0ms;
+  }
+
+  .reveal-group.is-visible > .reveal-item {
+    opacity: 1;
+    transform: none;
   }
 }

@@ -1,7 +1,6 @@
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import Reveal from './components/Reveal'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
@@ -21,15 +20,9 @@ export default function App() {
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <main id="contenido" className="mx-auto max-w-6xl px-4 sm:px-6">
         <Hero />
-        <Reveal>
-          <About />
-        </Reveal>
-        <Reveal>
-          <Projects />
-        </Reveal>
-        <Reveal>
-          <Contact />
-        </Reveal>
+        <About />
+        <Projects />
+        <Contact />
       </main>
       <Footer />
     </>
