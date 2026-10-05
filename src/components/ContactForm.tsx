@@ -52,7 +52,7 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: ACCESS_KEY,
-          subject: `Nuevo mensaje desde el portfolio de ${fields.name.trim()}`,
+          subject: `Nuevo mensaje de ${fields.name.trim()} desde tu portfolio`,
           name: fields.name.trim(),
           email: fields.email.trim(),
           message: fields.message.trim(),
