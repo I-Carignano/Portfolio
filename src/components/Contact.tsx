@@ -6,8 +6,8 @@ import Reveal from './Reveal'
 
 const delay = (i: number) => ({ '--i': i }) as CSSProperties
 
-const labelClass = 'block text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400'
-const linkClass = 'break-all text-teal-700 underline-offset-4 hover:underline dark:text-teal-300'
+const labelClass = 'block text-sm font-semibold uppercase tracking-wide text-ink-muted dark:text-ink-muted'
+const linkClass = 'break-all text-accent-text underline-offset-4 hover:underline dark:text-accent-text'
 
 export default function Contact() {
   const whatsappUrl = `https://wa.me/${profile.whatsappNumber}?text=${encodeURIComponent(profile.whatsappMessage)}`
@@ -19,7 +19,7 @@ export default function Contact() {
         <h2 id="titulo-contacto" className="text-3xl font-bold tracking-tight">
           Contacto
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+        <p className="mt-3 max-w-2xl text-ink-muted">
           Si tenés una oportunidad laboral o un proyecto en mente, escribime. Te respondo lo antes posible.
         </p>
       </Reveal>

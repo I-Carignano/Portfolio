@@ -3,23 +3,63 @@
 /* El modo oscuro se activa con la clase "dark" en <html>, no con la preferencia del sistema. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Paleta: gris carbón y azul eléctrico. Los valores viven en :root (claro) y html.dark (oscuro);
+   las utilidades (bg-canvas, text-ink, bg-accent...) leen las variables en runtime. */
+@theme {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+}
+
+:root {
+  --canvas: #f4f4f2; /* marfil sutil, nunca blanco puro en bloques grandes */
+  --surface: #fafaf8;
+  --surface-2: #e8e8e5;
+  --ink: #1e1e1f;
+  --ink-muted: #4a4a4d;
+  --line: #d5d5d1;
+  --accent: #0066ff; /* botones, bordes y realces */
+  --accent-text: #0052cc; /* texto de acento: #0066ff sobre marfil da 4.4:1, esta da 6.2:1 */
+  --accent-strong: #0052cc;
+  --accent-soft: #e3eeff;
+  --on-accent: #ffffff;
+}
+
+html.dark {
+  --canvas: #121212;
+  --surface: #1c1c1e;
+  --surface-2: #2a2a2d;
+  --ink: #e5e5e5;
+  --ink-muted: #a6a6ab;
+  --line: #34343a;
+  --accent: #3388ff; /* más saturado en oscuro para no perder visibilidad */
+  --accent-text: #3388ff;
+  --accent-strong: #5c9dff;
+  --accent-soft: #1a2a44;
+  --on-accent: #121212;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
-    background-color: #f8fafc;
-  }
-
-  html.dark {
-    background-color: #020617;
+    background-color: var(--canvas);
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+    @apply bg-canvas text-ink antialiased;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-teal-700 dark:outline-teal-300;
+    @apply outline-2 outline-offset-2 outline-accent;
   }
 
   @media (prefers-reduced-motion: reduce) {

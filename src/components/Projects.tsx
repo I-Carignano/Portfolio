@@ -8,16 +8,16 @@ function ProjectCard({ project, index, wide }: { project: Project; index: number
   return (
     <article
       style={{ '--i': index } as CSSProperties}
-      className={`reveal-item flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900 ${wide ? 'md:col-span-2' : ''}`}
+      className={`reveal-item flex h-full flex-col rounded-2xl border border-line bg-surface p-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 dark:border-line dark:bg-surface ${wide ? 'md:col-span-2' : ''}`}
     >
       <h3 className="text-xl font-semibold">{project.title}</h3>
-      <p className="mt-3 flex-1 leading-relaxed text-slate-600 dark:text-slate-300">{project.description}</p>
+      <p className="mt-3 flex-1 leading-relaxed text-ink-muted">{project.description}</p>
 
       <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tecnologías usadas">
         {project.technologies.map((tech) => (
           <li
             key={tech}
-            className="rounded-md bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800 dark:bg-teal-400/10 dark:text-teal-200"
+            className="rounded-md bg-accent-soft px-2.5 py-1 text-xs font-medium text-ink dark:bg-accent/10"
           >
             {tech}
           </li>
@@ -30,7 +30,7 @@ function ProjectCard({ project, index, wide }: { project: Project; index: number
             href={project.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-teal-700 underline-offset-4 hover:underline dark:text-teal-300"
+            className="text-accent-text underline-offset-4 hover:underline"
           >
             Ver repositorio<span className="sr-only"> de {project.title} (se abre en una pestaña nueva)</span>
           </a>
@@ -40,12 +40,12 @@ function ProjectCard({ project, index, wide }: { project: Project; index: number
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-teal-700 underline-offset-4 hover:underline dark:text-teal-300"
+            className="text-accent-text underline-offset-4 hover:underline"
           >
             Ver demo<span className="sr-only"> de {project.title} (se abre en una pestaña nueva)</span>
           </a>
         )}
-        {!project.repoUrl && <p className="text-xs font-normal text-slate-500 dark:text-slate-400">Repositorio privado · proyecto comercial propio</p>}
+        {!project.repoUrl && <p className="text-xs font-normal text-ink-muted">Repositorio privado · proyecto comercial propio</p>}
       </div>
     </article>
   )
@@ -60,7 +60,7 @@ export default function Projects() {
         <h2 id="titulo-proyectos" className="text-3xl font-bold tracking-tight">
           Proyectos
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+        <p className="mt-3 max-w-2xl text-ink-muted">
           Trabajos de la facultad y proyectos personales. Cada uno enlaza a su código o a una demo publicada.
         </p>
       </Reveal>

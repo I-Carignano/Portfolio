@@ -11,7 +11,7 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 const emptyFields: ContactFields = { name: '', email: '', message: '' }
 
 const inputClass =
-  'mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700/30 aria-[invalid=true]:border-red-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-teal-300 dark:focus:ring-teal-300/30 dark:aria-[invalid=true]:border-red-400'
+  'mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-ink placeholder:text-ink-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 aria-[invalid=true]:border-red-600 dark:border-line dark:bg-surface dark:text-ink dark:placeholder:text-ink-muted dark:focus:border-accent dark:focus:ring-accent/30 dark:aria-[invalid=true]:border-red-400'
 
 export default function ContactForm() {
   const [fields, setFields] = useState<ContactFields>(emptyFields)
@@ -150,14 +150,14 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="inline-flex items-center justify-center rounded-lg bg-teal-700 px-6 py-3 font-medium text-white transition-colors hover:bg-teal-800 disabled:cursor-wait disabled:opacity-70 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+        className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 font-medium text-on-accent transition-colors hover:bg-accent-strong disabled:cursor-wait disabled:opacity-70"
       >
         {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
       </button>
 
       <p role="status" aria-live="polite" className="text-sm">
         {status === 'success' && (
-          <span className="text-teal-800 dark:text-teal-300">¡Gracias! Recibí tu mensaje y te respondo pronto.</span>
+          <span className="text-ink dark:text-accent-text">¡Gracias! Recibí tu mensaje y te respondo pronto.</span>
         )}
         {status === 'error' && (
           <span className="text-red-700 dark:text-red-300">

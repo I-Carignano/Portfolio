@@ -74,24 +74,24 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
   const closeMenu = () => setMenuOpen(false)
 
   const linkClass = (id: string) =>
-    `text-sm font-medium transition-colors hover:text-teal-700 dark:hover:text-teal-300 ${
+    `text-sm font-medium transition-colors hover:text-accent-text ${
       activeId === id
-        ? 'text-teal-700 underline underline-offset-8 dark:text-teal-300'
-        : 'text-slate-600 dark:text-slate-300'
+        ? 'text-accent-text underline underline-offset-8'
+        : 'text-ink-muted'
     }`
 
   const mobileLinkClass = (id: string) =>
-    `block rounded-lg px-3 py-3 text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+    `block rounded-lg px-3 py-3 text-base font-medium hover:bg-surface-2 ${
       activeId === id
-        ? 'bg-teal-50 text-teal-800 dark:bg-teal-400/10 dark:text-teal-200'
-        : 'text-slate-800 dark:text-slate-100'
+        ? 'bg-accent-soft text-ink dark:bg-accent/10'
+        : 'text-ink'
     }`
 
   return (
     <>
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 md:pt-4">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white/75 px-4 shadow-xl shadow-slate-900/10 backdrop-blur-[18px] backdrop-saturate-150 md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full md:pl-6 md:pr-2.5 dark:border-teal-300/15 dark:bg-slate-900/70 dark:shadow-black/40">
-          <a href="#inicio" className="truncate font-semibold text-slate-900 md:justify-self-start dark:text-slate-100">
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 rounded-2xl border border-line bg-surface/75 px-4 shadow-xl shadow-ink/10 backdrop-blur-[18px] backdrop-saturate-150 md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full md:pl-6 md:pr-2.5 dark:border-accent/15 dark:bg-surface/70 dark:shadow-black/40">
+          <a href="#inicio" className="truncate font-semibold text-ink md:justify-self-start">
             Ignacio Carignano
           </a>
 
@@ -118,7 +118,7 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
             <button
               ref={menuButtonRef}
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition-colors hover:bg-slate-200 md:hidden dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:bg-surface-2 md:hidden dark:text-ink"
               aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={menuOpen}
               aria-controls="menu-lateral"
@@ -141,7 +141,7 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
           tabIndex={-1}
           aria-hidden="true"
           onClick={closeMenu}
-          className={`absolute inset-0 bg-slate-950/60 transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-[#121212]/60 transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0'}`}
         />
         <aside
           ref={drawerRef}
@@ -150,15 +150,15 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
           aria-modal="true"
           aria-label="Menú de navegación"
           inert={!menuOpen}
-          className={`absolute right-0 top-0 flex h-full w-72 max-w-[85vw] flex-col gap-6 bg-white p-6 shadow-xl transition-transform duration-300 dark:bg-slate-900 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`absolute right-0 top-0 flex h-full w-72 max-w-[85vw] flex-col gap-6 bg-surface p-6 shadow-xl transition-transform duration-300 dark:bg-surface ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Menú</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">Menú</p>
             <button
               type="button"
               onClick={closeMenu}
               aria-label="Cerrar menú"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink-muted hover:bg-surface-2 dark:text-ink"
             >
               <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M18 6 6 18M6 6l12 12" />
